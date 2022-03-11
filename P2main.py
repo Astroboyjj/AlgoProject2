@@ -2,8 +2,9 @@
 """
 Created on Wed Feb 23 09:39:44 2022
 
-@author: Jacob Jeffery, Keondre Johnson
+@author: Jacob Jeffery, Keondre Johnson, Jacob Theriot
 """
+from Timer import Timer
 
 """
 Bubble Sort -
@@ -168,9 +169,21 @@ def radix_sort(arr):
     while max1/exp > 0:
         countingSort(arr,exp)
         exp *= 10
-        
+
         
 def main():
+
+    #creates the timer object for timing our sorts
+    #timer.start() will start the timer (run this before you call the sort)
+    #timer.stop() will stop the timer and display the time (run this right after calling sort)
+    #example:
+        #timer.start()
+        #radix_sort(arr)
+        #timer.stop()
+    timer = Timer()
+    
+    
+    
     pass
 
 

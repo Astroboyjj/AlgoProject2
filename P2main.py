@@ -5,6 +5,7 @@ Created on Wed Feb 23 09:39:44 2022
 @author: Jacob Jeffery, Keondre Johnson, Jacob Theriot
 """
 from Timer import Timer
+import random
 
 """
 Bubble Sort -
@@ -14,7 +15,7 @@ Bubble Sort -
         
 CODE FROM: https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889
 """
-def bubble_sort(arr):
+def bubbleSort(arr):
     #Swaps two given indexes
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
@@ -57,7 +58,7 @@ def quick_sort_recursion(array, begin, end):
     quick_sort_recursion(array, begin, pivot_idx-1)
     quick_sort_recursion(array, pivot_idx+1, end)
 
-def quick_sort(array, begin=0, end=None):
+def quickSort(array, begin=0, end=None):
     if end is None:
         end = len(array) - 1
     
@@ -71,7 +72,7 @@ Merge Sort -
     
 CODE FROM: https://www.geeksforgeeks.org/merge-sort/
 """
-def merge_sort(arr):
+def mergeSort(arr):
     if len(arr) > 1:
   
          # Finding the mid of the array
@@ -84,10 +85,10 @@ def merge_sort(arr):
         R = arr[mid:]
   
         # Sorting the first half
-        merge_sort(L)
+        mergeSort(L)
   
         # Sorting the second half
-        merge_sort(R)
+        mergeSort(R)
   
         i = j = k = 0
   
@@ -159,7 +160,7 @@ def countingSort(arr, exp1):
         arr[i] = output[i]
  
 # Method to do Radix Sort
-def radix_sort(arr):
+def radixSort(arr):
     # Find the maximum number to know number of digits
     max1 = max(arr)
     # Counting sort every digit. Instead
@@ -182,9 +183,59 @@ def main():
         #timer.stop()
     timer = Timer()
     
+    # Introduction for CLI
+    print("-----Algorithms Project 2: Sorting Algorithm Evaluation-----")
+    # This creates a random array of integers from 1-100
+    print("-Generating Random Data-")
+    rand_array = [i for i in range(1,101)]
+    random.shuffle(rand_array)
     
+    # CLI for chosing the soring algorithms
+    print("Which algorithm would you like to try?")
+    print("Type the letter for that sort found inside the parentheses before the name of the sort.")
+    print("(B) Bubble Sort")
+    print("(Q) Quick Sort")
+    print("(M) Merge Sort")
+    print("(R) Radix Sort")
+    choice = input()
     
-    pass
+    # This starts the timer, runs the selected sort, and stops the timer
+    if choice == 'B' or choice == 'b':
+        print("Bubble Sort was selected!")
+        timer.start()
+        bubbleSort(rand_array)
+        timer.stop()
+        file_name = 'P2outputB.txt'
+    elif choice == 'Q' or choice == 'q':
+        print("Quick Sort was selected!")
+        timer.start()
+        quickSort(rand_array)
+        timer.stop()
+        file_name = 'P2outputQ.txt'
+    elif choice == 'M' or choice == 'm':
+        print("Merge Sort was selected!")
+        timer.start()
+        mergeSort(rand_array)
+        timer.stop()  
+        file_name = 'P2outputM.txt'
+    elif choice == 'R' or choice == 'r':
+        print("Radix Sort was selected!")
+        timer.start()
+        radixSort(rand_array)
+        timer.stop()
+        file_name = 'P2outputR.txt'
+    else:
+        print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
+       
+    #temp
+    timeVar = 100
+    
+    # This creates an output file named "P2output.txt" with the sorted array and the time
+    output_file = open(file_name, 'w')
+    output_file.write(str(rand_array))
+    output_file.write("\nTime(seconds): " + str(timeVar))
+    output_file.close()
+    
 
 
 # Calling Main

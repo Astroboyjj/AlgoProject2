@@ -185,56 +185,88 @@ def main():
     
     # Introduction for CLI
     print("-----Algorithms Project 2: Sorting Algorithm Evaluation-----")
-    # This creates a random array of integers from 1-100
-    print("-Generating Random Data-")
-    rand_array = [i for i in range(1,101)]
-    random.shuffle(rand_array)
     
-    # CLI for chosing the soring algorithms
-    print("Which algorithm would you like to try?")
-    print("Type the letter for that sort found inside the parentheses before the name of the sort.")
-    print("(B) Bubble Sort")
-    print("(Q) Quick Sort")
-    print("(M) Merge Sort")
-    print("(R) Radix Sort")
-    choice = input()
-    
-    # This starts the timer, runs the selected sort, and stops the timer
-    if choice == 'B' or choice == 'b':
-        print("Bubble Sort was selected!")
-        timer.start()
-        bubbleSort(rand_array)
-        timer.stop()
-        file_name = 'P2outputB.txt'
-    elif choice == 'Q' or choice == 'q':
-        print("Quick Sort was selected!")
-        timer.start()
-        quickSort(rand_array)
-        timer.stop()
-        file_name = 'P2outputQ.txt'
-    elif choice == 'M' or choice == 'm':
-        print("Merge Sort was selected!")
-        timer.start()
-        mergeSort(rand_array)
-        timer.stop()  
-        file_name = 'P2outputM.txt'
-    elif choice == 'R' or choice == 'r':
-        print("Radix Sort was selected!")
-        timer.start()
-        radixSort(rand_array)
-        timer.stop()
-        file_name = 'P2outputR.txt'
-    else:
-        print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
+    # Loop and loop control for the main program
+    stillRunning = True
+    while(stillRunning):
+        
+        # input and calculation for the data set size. formula is 100 * (10 * x) where x is the input value
+        print("How large do you want your data set?")
+        print("The size of the set will be 100 * (10 * x) with x being the number you choose:")
+        data_size = input()
+        if not data_size.isnumeric():
+            while(not data_size.isnumeric()):
+                print("Please input an integer:")
+                data_size = input()
+        data_size = int(data_size)
+            
+        data_size = (100 * (10 * data_size))
+        print("You selected a data size of " + str(data_size))
+        data_size = data_size + 1 # This is to make sure the data is from 1-data_size for the range function
        
-    #temp
-    timeVar = 100
-    
-    # This creates an output file named "P2output.txt" with the sorted array and the time
-    output_file = open(file_name, 'w')
-    output_file.write(str(rand_array))
-    output_file.write("\nTime(seconds): " + str(timeVar))
-    output_file.close()
+        # This creates a random array of integers from 1 to the data size. (range(1,101) would create an array of numbers from 1-100)
+        print("-Generating Random Data-")
+        rand_array = [i for i in range(1,data_size)]
+        random.shuffle(rand_array)
+        
+        # CLI for chosing the soring algorithms
+        print("Which algorithm would you like to try?")
+        print("Type the letter for that sort found inside the parentheses before the name of the sort.")
+        print("(B) Bubble Sort")
+        print("(Q) Quick Sort")
+        print("(M) Merge Sort")
+        print("(R) Radix Sort")
+        choice = input()
+        
+        # This starts the timer, runs the selected sort, and stops the timer
+        if choice == 'B' or choice == 'b':
+            print("Bubble Sort was selected!")
+            timer.start()
+            bubbleSort(rand_array)
+            timer.stop()
+            file_name = 'P2outputB.txt'
+        elif choice == 'Q' or choice == 'q':
+            print("Quick Sort was selected!")
+            timer.start()
+            quickSort(rand_array)
+            timer.stop()
+            file_name = 'P2outputQ.txt'
+        elif choice == 'M' or choice == 'm':
+            print("Merge Sort was selected!")
+            timer.start()
+            mergeSort(rand_array)
+            timer.stop()  
+            file_name = 'P2outputM.txt'
+        elif choice == 'R' or choice == 'r':
+            print("Radix Sort was selected!")
+            timer.start()
+            radixSort(rand_array)
+            timer.stop()
+            file_name = 'P2outputR.txt'
+        else:
+            print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
+            
+        #temp
+        timeVar = 100
+        
+        # This creates an output file with the sorted array and the time
+        output_file = open(file_name, 'w')
+        output_file.write(str(rand_array))
+        output_file.write("\nTime(seconds): " + str(timeVar))
+        output_file.close()
+        
+        # Prompt for ending the program
+        new_data_control = True
+        while(new_data_control):
+            print("Would you like a new data set?(y/n):")
+            new_data_choice = input()
+            if new_data_choice == 'n' or new_data_choice == 'N':
+                stillRunning = False
+                new_data_control = False
+            elif new_data_choice == 'y' or new_data_choice == 'Y':
+                new_data_control = False
+            else:
+                print("I didn't understand. Please type the letter 'y' for yes or the letter 'n' for no.")
     
 
 

@@ -1,0 +1,12 @@
+---Bubble Sort Analysis---
+Data size: 1000
+Time(seconds): 0.036015300000002526
+---Quick Sort Analysis---
+Data size: 1000
+Time(seconds): 0.03275919999998678
+---Merge Sort Analysis---
+Data size: 1000
+Time(seconds): 0.03477069999999571
+---Heap Sort Analysis---
+Data size: 1000
+Time(seconds): 0.03455649999997945

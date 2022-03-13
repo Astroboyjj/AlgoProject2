@@ -160,11 +160,13 @@ def runTest(output_file, sort_name, rand_array, data_size):
     bubbleSort(rand_array)
     end = time.perf_counter()
     print("-Sorting Finished-")
+    print("Time: " + str(end-start))
     
     # Write the output to the output file
     output_file.write("---" + sort_name + " Analysis---\n")
     output_file.write("Data size: " + str(data_size - 1) + "\n")
     output_file.write("Time(seconds): " + str(end-start) + "\n")
+    print("-Written to Ouput File-")
     
         
 def main():
@@ -236,6 +238,7 @@ def main():
                 
     # Closes and saves the output file after the program finishes
     output_file.close()
+    print("Output file saved to the same location as this program.")
     
 
 

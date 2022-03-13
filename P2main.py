@@ -151,13 +151,27 @@ def heapSort(arr):
         arr[i], arr[0] = arr[0], arr[i]  # swap
         
 # Method for running the test and writing the output to file
-def runTest(output_file, loop_index, rand_array, data_size):
+def runTest(test, output_file, loop_index, data, data_size):
     print("-Sorting Started-")
     
     # Run the test
-    start = time.perf_counter()
-    bubbleSort(rand_array)
-    end = time.perf_counter()
+    if test == "B":
+        start = time.perf_counter()
+        bubbleSort(data)
+        end = time.perf_counter()
+    elif test == "Q":
+        start = time.perf_counter()
+        quickSort(data)
+        end = time.perf_counter()
+    elif test == "M":
+        start = time.perf_counter()
+        mergeSort(data)
+        end = time.perf_counter()
+    elif test == "H":
+        start = time.perf_counter()
+        heapSort(data)
+        end = time.perf_counter()
+        
     print("-Sorting Finished-")
     print("Time: " + str(end-start))
     
@@ -169,12 +183,19 @@ def runTest(output_file, loop_index, rand_array, data_size):
     
     
 # Method for generating new random array
-def generateRandArray(data_size):
+def generateDataSet(data_size, data_order):
     # This creates a random array of integers from 1 to the data size. (range(1,101) would create an array of numbers from 1-100)
     print("-Generating Random Data-")
-    rand_array = [i for i in range(1,data_size)]
-    random.shuffle(rand_array)
-    return rand_array
+    data_set = [i for i in range(1,data_size)]
+    
+    if data_order == 'A' or data_order == 'a': 
+        random.shuffle(data_set)
+    elif data_order == 'B' or data_order == 'b':
+        pass
+    elif data_order == 'C' or data_order == 'c':
+        data_set.reverse()
+    
+    return data_set
     
         
 def main():
@@ -189,7 +210,7 @@ def main():
     stillRunning = True
     while(stillRunning):
         
-        # input and calculation for the data set size.
+        # input for the data set size and order.
         print("How large do you want your data set?")
         data_size = input()
         if not data_size.isnumeric():
@@ -199,6 +220,16 @@ def main():
         data_size = int(data_size)
         print("You selected a data size of " + str(data_size))
         data_size = data_size + 1 # This is to make sure the data is from 1-data_size for the range function
+        
+        print("How do you want your data set sorted?")
+        print("(A) Random order")
+        print("(B) Sorted order")
+        print("(C) Reverse sorted order")
+        data_order = input()
+        while(not data_order == 'A' and not data_order == 'a' and not data_order == 'B' and not data_order == 'b' and not data_order == 'C' and not data_order == 'c'):
+            print("Please input the letter inside the parentheses corresponding to your choice")
+            data_order = input()
+        
         
         # CLI for chosing the soring algorithms
         print("Which algorithm would you like to try? (Runs 5 times)")
@@ -216,29 +247,29 @@ def main():
             print("Bubble Sort was selected!")
             output_file.write("------Bubble Sort------\n")
             while(i < 5):
-                rand_array = generateRandArray(data_size)
-                runTest(output_file, i, rand_array, data_size)
+                data = generateDataSet(data_size, data_order)
+                runTest('B', output_file, i, data, data_size)
                 i = i + 1
         elif choice == 'Q' or choice == 'q':
             print("Quick Sort was selected!")
             output_file.write("------Quick Sort------\n")
             while(i < 5):
-                rand_array = generateRandArray(data_size)
-                runTest(output_file, i, rand_array, data_size)
+                data = generateDataSet(data_size, data_order)
+                runTest('Q', output_file, i, data, data_size)
                 i = i + 1
         elif choice == 'M' or choice == 'm':
             print("Merge Sort was selected!")
             output_file.write("------Merge Sort------\n")
             while(i < 5):
-                rand_array = generateRandArray(data_size)
-                runTest(output_file, i, rand_array, data_size)
+                data = generateDataSet(data_size, data_order)
+                runTest('M', output_file, i, data, data_size)
                 i = i + 1
         elif choice == 'H' or choice == 'h':
             print("Heap Sort was selected!")
             output_file.write("------Heap Sort------\n")
             while(i < 5):
-                rand_array = generateRandArray(data_size)
-                runTest(output_file, i, rand_array, data_size)
+                data = generateDataSet(data_size, data_order)
+                runTest('H', output_file, i, data, data_size)
                 i = i + 1
         else:
             print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")

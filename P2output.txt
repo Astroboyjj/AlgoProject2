@@ -1,1 +1,16 @@
 ------Bubble Sort------
+---Analysis 1---
+Data size: 10000
+Time(seconds): 5.085979799999905
+---Analysis 2---
+Data size: 10000
+Time(seconds): 5.257683000000043
+---Analysis 3---
+Data size: 10000
+Time(seconds): 4.79091040000003
+---Analysis 4---
+Data size: 10000
+Time(seconds): 5.079041299999972
+---Analysis 5---
+Data size: 10000
+Time(seconds): 5.0979692999999315

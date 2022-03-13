@@ -146,24 +146,9 @@ def heapSort(arr):
     # Build a maxheap.
     for i in range(n//2 - 1, -1, -1):
         heapify(arr, n, i)
- 
-<<<<<<< Updated upstream
     # One by one extract elements
     for i in range(n-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # swap
-        heapify(arr, i, 0)
-=======
-# Method to do Radix Sort
-def radixSort(arr):
-    # Find the maximum number to know number of digits
-    max1 = max(arr)
-    # Counting sort every digit. Instead
-    # of passing digit number, exp is passed. exp is 10^i
-    # where i is current digit number
-    exp = 1
-    while max1/exp > 0:
-        countingSort(arr,exp)
-        exp *= 10
         
 # Method for running the test and writing the output to file
 def runTest(output_file, sort_name, rand_array, data_size):
@@ -180,8 +165,7 @@ def runTest(output_file, sort_name, rand_array, data_size):
     output_file.write("---" + sort_name + " Analysis---\n")
     output_file.write("Data size: " + str(data_size - 1) + "\n")
     output_file.write("Time(seconds): " + str(end-start) + "\n")
-
->>>>>>> Stashed changes
+    
         
 def main():
 
@@ -239,23 +223,9 @@ def main():
         elif choice == 'Q' or choice == 'q':
             runTest(output_file, "Quick Sort", rand_array, data_size)
         elif choice == 'M' or choice == 'm':
-<<<<<<< Updated upstream
-            print("Merge Sort was selected!")
-            timer.start()
-            mergeSort(rand_array)
-            timer.stop()  
-            file_name = 'P2outputM.txt'
-        elif choice == 'H' or choice == 'h':
-            print("Heap Sort was selected!")
-            timer.start()
-            heapSort(rand_array)
-            timer.stop()
-            file_name = 'P2outputH.txt'
-=======
             runTest(output_file, "Merge Sort", rand_array, data_size)
-        elif choice == 'R' or choice == 'r':
-            runTest(output_file, "Radix Sort", rand_array, data_size)
->>>>>>> Stashed changes
+        elif choice == 'H' or choice == 'h':
+            runTest(output_file, "Heap Sort", rand_array, data_size)
         else:
             print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
             

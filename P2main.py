@@ -169,15 +169,6 @@ def runTest(output_file, sort_name, rand_array, data_size):
         
 def main():
 
-    #creates the timer object for timing our sorts
-    #timer.start() will start the timer (run this before you call the sort)
-    #timer.stop() will stop the timer and display the time (run this right after calling sort)
-    #example:
-        #timer.start()
-        #heap_sort(arr)
-        #timer.stop()
-    #timer = Timer()
-    
     # This creates an output file to write our results to
     output_file = open('P2output.txt', 'w')
     

@@ -197,8 +197,6 @@ def main():
                 print("Please input an integer:")
                 data_size = input()
         data_size = int(data_size)
-            
-        data_size = (100 * (10 * data_size))
         print("You selected a data size of " + str(data_size))
         data_size = data_size + 1 # This is to make sure the data is from 1-data_size for the range function
         

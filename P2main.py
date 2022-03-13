@@ -189,9 +189,8 @@ def main():
     stillRunning = True
     while(stillRunning):
         
-        # input and calculation for the data set size. formula is 100 * (10 * x) where x is the input value
+        # input and calculation for the data set size.
         print("How large do you want your data set?")
-        print("The size of the set will be 100 * (10 * x) with x being the number you choose:")
         data_size = input()
         if not data_size.isnumeric():
             while(not data_size.isnumeric()):

@@ -4,8 +4,9 @@ Created on Wed Feb 23 09:39:44 2022
 
 @author: Jacob Jeffery, Keondre Johnson, Jacob Theriot
 """
-from Timer import Timer
+#from Timer import Timer
 import random
+import time
 
 """
 Bubble Sort -
@@ -146,10 +147,41 @@ def heapSort(arr):
     for i in range(n//2 - 1, -1, -1):
         heapify(arr, n, i)
  
+<<<<<<< Updated upstream
     # One by one extract elements
     for i in range(n-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # swap
         heapify(arr, i, 0)
+=======
+# Method to do Radix Sort
+def radixSort(arr):
+    # Find the maximum number to know number of digits
+    max1 = max(arr)
+    # Counting sort every digit. Instead
+    # of passing digit number, exp is passed. exp is 10^i
+    # where i is current digit number
+    exp = 1
+    while max1/exp > 0:
+        countingSort(arr,exp)
+        exp *= 10
+        
+# Method for running the test and writing the output to file
+def runTest(output_file, sort_name, rand_array, data_size):
+    print(sort_name + " was selected!")
+    print("-Sorting Started-")
+    
+    # Run the test
+    start = time.perf_counter()
+    bubbleSort(rand_array)
+    end = time.perf_counter()
+    print("-Sorting Finished-")
+    
+    # Write the output to the output file
+    output_file.write("---" + sort_name + " Analysis---\n")
+    output_file.write("Data size: " + str(data_size - 1) + "\n")
+    output_file.write("Time(seconds): " + str(end-start) + "\n")
+
+>>>>>>> Stashed changes
         
 def main():
 
@@ -160,7 +192,10 @@ def main():
         #timer.start()
         #heap_sort(arr)
         #timer.stop()
-    timer = Timer()
+    #timer = Timer()
+    
+    # This creates an output file to write our results to
+    output_file = open('P2output.txt', 'w')
     
     # Introduction for CLI
     print("-----Algorithms Project 2: Sorting Algorithm Evaluation-----")
@@ -197,20 +232,14 @@ def main():
         print("(H) Heap Sort")
         choice = input()
         
-        # This starts the timer, runs the selected sort, and stops the timer
+        # This starts the timer, runs the selected sort, stops the timer, then writes the output data to the file
+        # Output data: Algorithm name, size of set, and time of the sort
         if choice == 'B' or choice == 'b':
-            print("Bubble Sort was selected!")
-            timer.start()
-            bubbleSort(rand_array)
-            timer.stop()
-            file_name = 'P2outputB.txt'
+            runTest(output_file, "Bubble Sort", rand_array, data_size)
         elif choice == 'Q' or choice == 'q':
-            print("Quick Sort was selected!")
-            timer.start()
-            quickSort(rand_array)
-            timer.stop()
-            file_name = 'P2outputQ.txt'
+            runTest(output_file, "Quick Sort", rand_array, data_size)
         elif choice == 'M' or choice == 'm':
+<<<<<<< Updated upstream
             print("Merge Sort was selected!")
             timer.start()
             mergeSort(rand_array)
@@ -222,17 +251,14 @@ def main():
             heapSort(rand_array)
             timer.stop()
             file_name = 'P2outputH.txt'
+=======
+            runTest(output_file, "Merge Sort", rand_array, data_size)
+        elif choice == 'R' or choice == 'r':
+            runTest(output_file, "Radix Sort", rand_array, data_size)
+>>>>>>> Stashed changes
         else:
             print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
             
-        #temp
-        timeVar = 100
-        
-        # This creates an output file with the sorted array and the time
-        output_file = open(file_name, 'w')
-        output_file.write(str(rand_array))
-        output_file.write("\nTime(seconds): " + str(timeVar))
-        output_file.close()
         
         # Prompt for ending the program
         new_data_control = True
@@ -246,6 +272,9 @@ def main():
                 new_data_control = False
             else:
                 print("I didn't understand. Please type the letter 'y' for yes or the letter 'n' for no.")
+                
+    # Closes and saves the output file after the program finishes
+    output_file.close()
     
 
 

@@ -13,25 +13,21 @@ Bubble Sort -
     Parameters:
         arr - array to be sorted
         
-CODE FROM: https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889
+CODE ADAPTED FROM: https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889
 """
 def bubbleSort(arr):
-    #Swaps two given indexes
-    def swap(i, j):
-        arr[i], arr[j] = arr[j], arr[i]
-
+    
     n = len(arr)
     swapped = True
-    
     x = -1
     while swapped:
         swapped = False
         x = x + 1
         for i in range(1, n-x):
             if arr[i - 1] > arr[i]:
-                swap(i - 1, i)
+                #Swaps two indexes
+                arr[i-1], arr[i] = arr[i], arr[i-1]
                 swapped = True
-                    
     return arr
 
 """
@@ -114,63 +110,46 @@ def mergeSort(arr):
             k += 1
             
 """
-Radix Sort -
-    Desc: Sorts an array using radix sort
-    Parameters:
-        arr - array to be sorted
-    
-CODE FROM: https://www.geeksforgeeks.org/python-program-for-radix-sort/
-# This code is contributed by Mohit Kumra
-# This code is updated by Sudeep Saxena(saxenasudeepcse@gmail.com) on July 9, 2020
-"""
-# A function to do counting sort of arr[] according to
-# the digit represented by exp.
-def countingSort(arr, exp1):
-   
-    n = len(arr)
-   
-    # The output array elements that will have sorted arr
-    output = [0] * (n)
-   
-    # initialize count array as 0
-    count = [0] * (10)
-   
-    # Store count of occurrences in count[]
-    for i in range(0, n):
-        index = (arr[i]/exp1)
-        count[int((index)%10)] += 1
-   
-    # Change count[i] so that count[i] now contains actual
-    #  position of this digit in output array
-    for i in range(1,10):
-        count[i] += count[i-1]
-   
-    # Build the output array
-    i = n-1
-    while i>=0:
-        index = (arr[i]/exp1)
-        output[ count[ int((index)%10) ] - 1] = arr[i]
-        count[int((index)%10)] -= 1
-        i -= 1
-   
-    # Copying the output array to arr[],
-    # so that arr now contains sorted numbers
-    i = 0
-    for i in range(0,len(arr)):
-        arr[i] = output[i]
- 
-# Method to do Radix Sort
-def radixSort(arr):
-    # Find the maximum number to know number of digits
-    max1 = max(arr)
-    # Counting sort every digit. Instead
-    # of passing digit number, exp is passed. exp is 10^i
-    # where i is current digit number
-    exp = 1
-    while max1/exp > 0:
-        countingSort(arr,exp)
-        exp *= 10
+Heap Sort -
 
+Desc: Sorts an array using heap sort
+Parameters:
+    arr - array to be sorted
+CODE FROM: https://www.geeksforgeeks.org/heap-sort/
+"""    
+ # Python program for implementation of heap Sort
+# To heapify subtree rooted at index i.
+# n is size of heap
+ 
+def heapify(arr, n, i):
+    largest = i  # Initialize largest as root
+    l = 2 * i + 1     # left = 2*i + 1
+    r = 2 * i + 2     # right = 2*i + 2
+    # See if left child of root exists and is
+    # greater than root
+    if l < n and arr[largest] < arr[l]:
+        largest = l
+    # See if right child of root exists and is
+    # greater than root
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+    # Change root, if needed
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]  #swap root
+        # Heapify the root.
+        heapify(arr, n, largest)
+ 
+# The main function to sort an array of given size
+def heapSort(arr):
+    n = len(arr)
+    # Build a maxheap.
+    for i in range(n//2 - 1, -1, -1):
+        heapify(arr, n, i)
+ 
+    # One by one extract elements
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # swap
+        heapify(arr, i, 0)
         
 def main():
 
@@ -179,7 +158,7 @@ def main():
     #timer.stop() will stop the timer and display the time (run this right after calling sort)
     #example:
         #timer.start()
-        #radix_sort(arr)
+        #heap_sort(arr)
         #timer.stop()
     timer = Timer()
     
@@ -215,7 +194,7 @@ def main():
         print("(B) Bubble Sort")
         print("(Q) Quick Sort")
         print("(M) Merge Sort")
-        print("(R) Radix Sort")
+        print("(H) Heap Sort")
         choice = input()
         
         # This starts the timer, runs the selected sort, and stops the timer
@@ -237,12 +216,12 @@ def main():
             mergeSort(rand_array)
             timer.stop()  
             file_name = 'P2outputM.txt'
-        elif choice == 'R' or choice == 'r':
-            print("Radix Sort was selected!")
+        elif choice == 'H' or choice == 'h':
+            print("Heap Sort was selected!")
             timer.start()
-            radixSort(rand_array)
+            heapSort(rand_array)
             timer.stop()
-            file_name = 'P2outputR.txt'
+            file_name = 'P2outputH.txt'
         else:
             print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
             

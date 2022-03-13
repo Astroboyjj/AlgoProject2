@@ -151,8 +151,7 @@ def heapSort(arr):
         arr[i], arr[0] = arr[0], arr[i]  # swap
         
 # Method for running the test and writing the output to file
-def runTest(output_file, sort_name, rand_array, data_size):
-    print(sort_name + " was selected!")
+def runTest(output_file, loop_index, rand_array, data_size):
     print("-Sorting Started-")
     
     # Run the test
@@ -163,10 +162,19 @@ def runTest(output_file, sort_name, rand_array, data_size):
     print("Time: " + str(end-start))
     
     # Write the output to the output file
-    output_file.write("---" + sort_name + " Analysis---\n")
+    output_file.write("---Analysis " + str(loop_index + 1) + "---\n")
     output_file.write("Data size: " + str(data_size - 1) + "\n")
     output_file.write("Time(seconds): " + str(end-start) + "\n")
     print("-Written to Ouput File-")
+    
+    
+# Method for generating new random array
+def generateRandArray(data_size):
+    # This creates a random array of integers from 1 to the data size. (range(1,101) would create an array of numbers from 1-100)
+    print("-Generating Random Data-")
+    rand_array = [i for i in range(1,data_size)]
+    random.shuffle(rand_array)
+    return rand_array
     
         
 def main():
@@ -194,14 +202,9 @@ def main():
         data_size = (100 * (10 * data_size))
         print("You selected a data size of " + str(data_size))
         data_size = data_size + 1 # This is to make sure the data is from 1-data_size for the range function
-       
-        # This creates a random array of integers from 1 to the data size. (range(1,101) would create an array of numbers from 1-100)
-        print("-Generating Random Data-")
-        rand_array = [i for i in range(1,data_size)]
-        random.shuffle(rand_array)
         
         # CLI for chosing the soring algorithms
-        print("Which algorithm would you like to try?")
+        print("Which algorithm would you like to try? (Runs 5 times)")
         print("Type the letter for that sort found inside the parentheses before the name of the sort.")
         print("(B) Bubble Sort")
         print("(Q) Quick Sort")
@@ -211,14 +214,35 @@ def main():
         
         # This starts the timer, runs the selected sort, stops the timer, then writes the output data to the file
         # Output data: Algorithm name, size of set, and time of the sort
+        i = 0
         if choice == 'B' or choice == 'b':
-            runTest(output_file, "Bubble Sort", rand_array, data_size)
+            print("Bubble Sort was selected!")
+            output_file.write("------Bubble Sort------\n")
+            while(i < 5):
+                rand_array = generateRandArray(data_size)
+                runTest(output_file, i, rand_array, data_size)
+                i = i + 1
         elif choice == 'Q' or choice == 'q':
-            runTest(output_file, "Quick Sort", rand_array, data_size)
+            print("Quick Sort was selected!")
+            output_file.write("------Quick Sort------\n")
+            while(i < 5):
+                rand_array = generateRandArray(data_size)
+                runTest(output_file, i, rand_array, data_size)
+                i = i + 1
         elif choice == 'M' or choice == 'm':
-            runTest(output_file, "Merge Sort", rand_array, data_size)
+            print("Merge Sort was selected!")
+            output_file.write("------Merge Sort------\n")
+            while(i < 5):
+                rand_array = generateRandArray(data_size)
+                runTest(output_file, i, rand_array, data_size)
+                i = i + 1
         elif choice == 'H' or choice == 'h':
-            runTest(output_file, "Heap Sort", rand_array, data_size)
+            print("Heap Sort was selected!")
+            output_file.write("------Heap Sort------\n")
+            while(i < 5):
+                rand_array = generateRandArray(data_size)
+                runTest(output_file, i, rand_array, data_size)
+                i = i + 1
         else:
             print("I didn't understand. \nPlease use the letters found in the parentheses before the name of the sort.")
             

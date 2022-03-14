@@ -1,16 +1,164 @@
+------Merge Sort------
+---Analysis 1---
+Data size: 10
+Time(seconds): 1.5499999999946112e-05
+---Analysis 2---
+Data size: 10
+Time(seconds): 9.599999999387876e-06
+---Analysis 3---
+Data size: 10
+Time(seconds): 1.1699999999947863e-05
+---Analysis 4---
+Data size: 10
+Time(seconds): 1.089999999948077e-05
+---Analysis 5---
+Data size: 10
+Time(seconds): 1.1699999999947863e-05
+------Merge Sort------
+---Analysis 1---
+Data size: 100
+Time(seconds): 0.00013410000000035893
+---Analysis 2---
+Data size: 100
+Time(seconds): 0.00010379999999798883
+---Analysis 3---
+Data size: 100
+Time(seconds): 0.00010439999999789507
+---Analysis 4---
+Data size: 100
+Time(seconds): 0.00010890000000074451
+---Analysis 5---
+Data size: 100
+Time(seconds): 0.00011970000000260939
+------Merge Sort------
+---Analysis 1---
+Data size: 1000
+Time(seconds): 0.0012626000000039994
+---Analysis 2---
+Data size: 1000
+Time(seconds): 0.0012380000000007385
+---Analysis 3---
+Data size: 1000
+Time(seconds): 0.0013507000000032576
+---Analysis 4---
+Data size: 1000
+Time(seconds): 0.0012639000000049805
+---Analysis 5---
+Data size: 1000
+Time(seconds): 0.0012606999999960067
+------Merge Sort------
+---Analysis 1---
+Data size: 10000
+Time(seconds): 0.016691699999995535
+---Analysis 2---
+Data size: 10000
+Time(seconds): 0.016324999999994816
+---Analysis 3---
+Data size: 10000
+Time(seconds): 0.016494399999999132
+---Analysis 4---
+Data size: 10000
+Time(seconds): 0.01636519999999564
+---Analysis 5---
+Data size: 10000
+Time(seconds): 0.0168946999999946
+------Merge Sort------
+---Analysis 1---
+Data size: 100000
+Time(seconds): 0.20128270000000725
+---Analysis 2---
+Data size: 100000
+Time(seconds): 0.20906990000000292
+---Analysis 3---
+Data size: 100000
+Time(seconds): 0.20735249999999894
+---Analysis 4---
+Data size: 100000
+Time(seconds): 0.2038706000000019
+---Analysis 5---
+Data size: 100000
+Time(seconds): 0.20864410000000078
+------Heap Sort------
+---Analysis 1---
+Data size: 10
+Time(seconds): 1.2099999992187804e-05
+---Analysis 2---
+Data size: 10
+Time(seconds): 4.799999999249849e-06
+---Analysis 3---
+Data size: 10
+Time(seconds): 8.40000001289809e-06
+---Analysis 4---
+Data size: 10
+Time(seconds): 4.700000005186666e-06
+---Analysis 5---
+Data size: 10
+Time(seconds): 4.899999993313031e-06
+------Heap Sort------
+---Analysis 1---
+Data size: 100
+Time(seconds): 3.6899999997785926e-05
+---Analysis 2---
+Data size: 100
+Time(seconds): 2.6299999973389276e-05
+---Analysis 3---
+Data size: 100
+Time(seconds): 2.599999999119973e-05
+---Analysis 4---
+Data size: 100
+Time(seconds): 3.209999999853608e-05
+---Analysis 5---
+Data size: 100
+Time(seconds): 2.920000000017353e-05
+------Heap Sort------
+---Analysis 1---
+Data size: 1000
+Time(seconds): 0.00033009999998512285
+---Analysis 2---
+Data size: 1000
+Time(seconds): 0.0002722999999775766
+---Analysis 3---
+Data size: 1000
+Time(seconds): 0.00026800000000548607
+---Analysis 4---
+Data size: 1000
+Time(seconds): 0.0002721999999835134
+---Analysis 5---
+Data size: 1000
+Time(seconds): 0.00027330000000347354
+------Heap Sort------
+---Analysis 1---
+Data size: 10000
+Time(seconds): 0.002871200000015506
+---Analysis 2---
+Data size: 10000
+Time(seconds): 0.0028468999999802236
+---Analysis 3---
+Data size: 10000
+Time(seconds): 0.002852400000023181
+---Analysis 4---
+Data size: 10000
+Time(seconds): 0.0030194999999935135
+---Analysis 5---
+Data size: 10000
+Time(seconds): 0.002974800000004052
+------Heap Sort------
+---Analysis 1---
+Data size: 100000
+Time(seconds): 0.029362899999995307
+---Analysis 2---
+Data size: 100000
+Time(seconds): 0.03057699999999386
+---Analysis 3---
+Data size: 100000
+Time(seconds): 0.02882539999998812
+---Analysis 4---
+Data size: 100000
+Time(seconds): 0.030061899999992647
+---Analysis 5---
+Data size: 100000
+Time(seconds): 0.03078830000001176
 ------Bubble Sort------
 ---Analysis 1---
 Data size: 10000
-Time(seconds): 5.085979799999905
----Analysis 2---
-Data size: 10000
-Time(seconds): 5.257683000000043
----Analysis 3---
-Data size: 10000
-Time(seconds): 4.79091040000003
----Analysis 4---
-Data size: 10000
-Time(seconds): 5.079041299999972
----Analysis 5---
-Data size: 10000
-Time(seconds): 5.0979692999999315
+Time(seconds): 4.994399999999985

@@ -181,6 +181,17 @@ def runTest(test, output_file, loop_index, data, data_size):
     output_file.write("Time(seconds): " + str(end-start) + "\n")
     print("-Written to Ouput File-")
     
+ # Method for worst time complexity of Merge Sort
+def unMerge(chunk):
+    if len(chunk) > 2:
+        L = chunk[::2]
+        R = chunk[1::2]
+        L = unMerge(L)
+        R = unMerge(R)
+        chunk = L + R
+    elif len(chunk) == 2:
+        chunk.reverse()
+    return chunk
     
 # Method for generating new random array
 def generateDataSet(data_size, data_order):
@@ -188,15 +199,55 @@ def generateDataSet(data_size, data_order):
     print("-Generating Random Data-")
     data_set = [i for i in range(1,data_size)]
     
-    if data_order == 'A' or data_order == 'a': 
+    if data_order == 'random': 
         random.shuffle(data_set)
-    elif data_order == 'B' or data_order == 'b':
+    elif data_order == 'sorted':
         pass
-    elif data_order == 'C' or data_order == 'c':
+    elif data_order == 'reverse':
         data_set.reverse()
-    
+    elif data_order == 'mergeWorst':
+        data_set = unMerge(data_set)
+
     return data_set
     
+def chooseOrder(test):
+    print("How do you want your data set sorted?")
+    print("(A) Best time complexity")
+    print("(B) Average time complexity")
+    print("(C) Worst time complexity")
+    data_order = input()
+    while(not data_order == 'A' and not data_order == 'a' and not data_order == 'B' and not data_order == 'b' and not data_order == 'C' and not data_order == 'c'):
+        print("Please input the letter inside the parentheses corresponding to your choice")
+        data_order = input()
+    
+    if test == 'B' or test == 'b':
+        if data_order == 'A' or data_order == 'a':
+            return 'sorted'
+        elif data_order == 'B' or data_order == 'b':
+            return 'random'
+        elif data_order == 'C' or data_order == 'c':
+            return 'reverse'
+    elif test == 'Q' or test == 'q':
+        if data_order == 'A' or data_order == 'a':
+            return 'reverse'
+        elif data_order == 'B' or data_order == 'b':
+            return 'random'
+        elif data_order == 'C' or data_order == 'c':
+            return 'sorted'
+    elif test == 'M' or test == 'm':
+        if data_order == 'A' or data_order == 'a':
+            return 'sorted'
+        elif data_order == 'B' or data_order == 'b':
+            return 'random'
+        elif data_order == 'C' or data_order == 'c':
+            return 'mergeWorst'
+    elif test == 'H' or test == 'h':
+        if data_order == 'A' or data_order == 'a':
+            return 'random'
+        elif data_order == 'B' or data_order == 'b':
+            return 'random'
+        elif data_order == 'C' or data_order == 'c':
+            return 'random'
         
 def main():
 
@@ -220,17 +271,7 @@ def main():
         data_size = int(data_size)
         print("You selected a data size of " + str(data_size))
         data_size = data_size + 1 # This is to make sure the data is from 1-data_size for the range function
-        
-        print("How do you want your data set sorted?")
-        print("(A) Random order")
-        print("(B) Sorted order")
-        print("(C) Reverse sorted order")
-        data_order = input()
-        while(not data_order == 'A' and not data_order == 'a' and not data_order == 'B' and not data_order == 'b' and not data_order == 'C' and not data_order == 'c'):
-            print("Please input the letter inside the parentheses corresponding to your choice")
-            data_order = input()
-        
-        
+  
         # CLI for chosing the soring algorithms
         print("Which algorithm would you like to try? (Runs 5 times)")
         print("Type the letter for that sort found inside the parentheses before the name of the sort.")
@@ -239,6 +280,11 @@ def main():
         print("(M) Merge Sort")
         print("(H) Heap Sort")
         choice = input()
+        while(not choice == 'Q' and not choice == 'q' and not choice == 'B' and not choice == 'b' and not choice == 'M' and not choice == 'm' and not choice == 'H' and not choice == 'h'):
+            print("Please input the letter inside the parentheses corresponding to your choice")
+            choice = input()
+        
+        data_order = chooseOrder(choice)
         
         # This starts the timer, runs the selected sort, stops the timer, then writes the output data to the file
         # Output data: Algorithm name, size of set, and time of the sort

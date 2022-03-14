@@ -181,7 +181,7 @@ def runTest(test, output_file, loop_index, data, data_size):
     output_file.write("Time(seconds): " + str(end-start) + "\n")
     print("-Written to Ouput File-")
     
- # Method for worst time complexity of Merge Sort
+ # Method for worst time complexity of Merge Sort (will turn [1,2,3,4,5,6,7,8] into [5,1,7,3,6,2,8,4])
 def unMerge(chunk):
     if len(chunk) > 2:
         L = chunk[::2]
@@ -193,7 +193,7 @@ def unMerge(chunk):
         chunk.reverse()
     return chunk
     
-# Method for generating new random array
+# Method for generating new array and sorting it
 def generateDataSet(data_size, data_order):
     # This creates a random array of integers from 1 to the data size. (range(1,101) would create an array of numbers from 1-100)
     print("-Generating Random Data-")
@@ -210,6 +210,7 @@ def generateDataSet(data_size, data_order):
 
     return data_set
     
+# Method for choosing which sorting method to use on the data set before it is tested
 def chooseOrder(test):
     print("How do you want your data set sorted?")
     print("(A) Best time complexity")
@@ -219,7 +220,8 @@ def chooseOrder(test):
     while(not data_order == 'A' and not data_order == 'a' and not data_order == 'B' and not data_order == 'b' and not data_order == 'C' and not data_order == 'c'):
         print("Please input the letter inside the parentheses corresponding to your choice")
         data_order = input()
-    
+
+    # This is where the best, worst, and average case choices are defined for each algorithm
     if test == 'B' or test == 'b':
         if data_order == 'A' or data_order == 'a':
             return 'sorted'

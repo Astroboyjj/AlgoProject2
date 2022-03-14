@@ -5,8 +5,8 @@ Created on Wed Feb 23 09:39:44 2022
 @author: Jacob Jeffery, Keondre Johnson, Jacob Theriot
 """
 #from Timer import Timer
-import random
-import time
+import random, time, pathlib
+from pathlib import Path
 
 """
 Bubble Sort -
@@ -252,9 +252,15 @@ def chooseOrder(test):
             return 'random'
         
 def main():
-
     # This creates an output file to write our results to
-    output_file = open('P2output.txt', 'w')
+    file_path = Path("./P2output.txt")
+    if file_path.exists():
+        output_file = open('P2output.txt', 'a')
+        output_file.write("------------------------------------------------\n")
+        output_file.write("------------NEW EXECUTION OF PROGRAM------------\n")
+        output_file.write("------------------------------------------------\n")
+    else:
+        output_file = open('P2output.txt', 'x')
     
     # Introduction for CLI
     print("-----Algorithms Project 2: Sorting Algorithm Evaluation-----")
